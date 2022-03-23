@@ -5,6 +5,8 @@ import SlickNews from '../components/SlickNews'
 import UseOnScreen from '../components/UseOnScreen'
 import { useState, useEffect, useRef } from "react";
 
+
+
 const Child3 = dynamic(() => import("../components/Child3"));
 
 export default function Home() {
@@ -27,29 +29,46 @@ export default function Home() {
       </Head>
 
       <main >
+        {/* <div className='fixed z-50 w-full px-8 opacity-25'>
+
+          <div className='grid grid-cols-12 gap-1 md:gap-4'>
+            <div className='h-screen bg-slate-400' />
+            <div className='h-screen bg-slate-400' />
+            <div className='h-screen bg-slate-400' />
+            <div className='h-screen bg-slate-400' />
+            <div className='h-screen bg-slate-400' />
+            <div className='h-screen bg-slate-400' />
+            <div className='h-screen bg-slate-400' />
+            <div className='h-screen bg-slate-400' />
+            <div className='h-screen bg-slate-400' />
+            <div className='h-screen bg-slate-400' />
+            <div className='h-screen bg-slate-400' />
+            <div className='h-screen bg-slate-400' />
+
+          </div>
+        </div> */}
         <div className='bg-red-600 min-h-screen  min-w-full'>
           <div className='h-screen bg-green-400  mx-8 pt-10'>
-
-
             <SlickNews />
-
-
-
           </div>
           <div className='relative  h-screen bg-green-400 items-center flex justify-center flex-col mx-8'>
 
             <div className='h-screen w-full bg-purple-600 items-center flex justify-center flex-col'>
-              <p className='text-3xl text-white font-bold font-Db-Heaven'>TEST FONTTTT ภาษาไทย</p>
-              <p className='text-3xl text-white font-bold '>TEST FONTTTT ภาษาไทย</p>
+              <div data-aos="fade-right">
+
+                <p className='text-3xl text-white font-bold font-Db-Heaven'>TEST FONTTTT ภาษาไทย</p>
+                <p className='text-3xl text-white font-bold '>TEST FONTTTT ภาษาไทย</p>
+              </div>
             </div>
 
           </div>
+
           <div ref={child3Ref}>
             {child3RefValue && <Child3 />}
           </div>
 
 
-          <div className='fixed bottom-5 md:right-8'>
+          <div className='fixed bottom-16 md:right-8 flex justify-center md:block w-full md:w-auto'>
             <button className='bg-yellow-400 rounded-md w-48 p-5 animate-bounce'>BOOKING</button>
           </div>
         </div>

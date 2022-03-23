@@ -1,5 +1,10 @@
 import React from "react";
 import Slider from "react-slick";
+import { useRouter } from 'next/router'
+import Link from 'next/link'
+import en from '../locales/en'
+import th from '../locales/th'
+
 
 const SlickNews = () => {
     var settings = {
@@ -40,36 +45,49 @@ const SlickNews = () => {
             // instead of a settings object
         ]
     };
+
+    const router = useRouter()
+    const { id } = router.query
+    const { locale } = router;
+    const t = locale === 'en' ? en : th;
+
     return (
         <>
+            <div className="flex justify-center flex-col">
+                <p className="font-bold text-xl">
+                    TEST DYNAMIC ROUTING
+                </p>
+
+                {t.newsupdate.map((item) => (
+                    <div key={item.id}>
+                        <Link href={item.slug}>
+                            <a> {item.topic} </a>
+                        </Link>
+                    </div>
+                ))
+                }
+
+            </div>
             <Slider {...settings}>
 
 
-                <div className="w-auto h-52  p-5">
-                    <div className="bg-white mb-2 h-full rounded-md justify-center items-center flex">
-                        your content 1
+                {t.newsupdate.map((item) => (
+                    <div key={item.id} className="w-auto h-52  p-5">
+                        <Link href={item.slug} >
+
+                            <div className="bg-white mb-2 h-full rounded-md justify-center items-center flex">
+                                {item.topic}
+                            </div>
+
+
+                        </Link>
                     </div>
-                </div>
-                <div className="w-auto h-52  p-5">
-                    <div className="bg-white mb-2 h-full rounded-md justify-center items-center flex">
-                        your content 2
-                    </div>
-                </div>
-                <div className="w-auto h-52  p-5">
-                    <div className="bg-white mb-2 h-full rounded-md justify-center items-center flex">
-                        your content 3
-                    </div>
-                </div>
-                <div className="w-auto h-52  p-5">
-                    <div className="bg-white mb-2 h-full rounded-md justify-center items-center flex">
-                        your content 4
-                    </div>
-                </div>
-                <div className="w-auto h-52  p-5">
-                    <div className="bg-white mb-2 h-full rounded-md justify-center items-center flex">
-                        your content 5
-                    </div>
-                </div>
+
+                ))
+                }
+
+
+
 
             </Slider>
         </>
